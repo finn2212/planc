@@ -3,12 +3,16 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/Login/login';
 import { SignupPage } from '../pages/signup/signup';
-import { RequestfeedPage } from '../pages/requestfeed/requestfeed'
-import firebase from 'firebase';
+import { RequestfeedPage } from '../pages/requestfeed/requestfeed';
+import { ReplyPage } from '../pages/reply/reply'
+import firebase from 'firebase/app';
+import * as firestore from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+// import { AngularFirestore } from '@angular/fire/firestore';
 
 var firebaseConfig = {
   apiKey: "AIzaSyDbxkrYhAf2ujhoTcQ-GyDQvoOlIV0aoQA",
@@ -21,16 +25,15 @@ var firebaseConfig = {
   measurementId: "G-NB08V4GCVK"
 };
 firebase.initializeApp(firebaseConfig);
-firebase.firestore().settings({
-  timestampsInSnapshots: true
-})
+
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
     SignupPage,
-    RequestfeedPage
+    RequestfeedPage,
+    ReplyPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ firebase.firestore().settings({
     MyApp,
     LoginPage,
     SignupPage,
-    RequestfeedPage
+    RequestfeedPage,
+    ReplyPage
   ],
   providers: [
     StatusBar,

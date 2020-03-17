@@ -3,17 +3,32 @@
     <ion-title>Aktuelle Hilfe-Gesuche</ion-title>
     <ion-buttons end>
 <button ion-button icon-only clear>
-  <ion-icon name="LogOut"></ion-icon>
+  <ion-icon name="Logout"></ion-icon>
 </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+  <ion-row>
+    <!--
+<ion-searchbar
+  showcancelbutton=""
+    (ioninput)="filterList($event)">
+ 
+  <ion-list>
+    <ion-item *ngfor="let item of goalList">
+      <ion-label>{{ item.goalName }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-searchbar>
+-->
+  </ion-row>
   <ion-row margin class="rowStyle">
     
     <ion-input type="text" placeholder="Wie kann man dich unterstützen..." [(ngModel)]="text"></ion-input>
-
+    <ion-input type="location" placeholder="Meine Stadt" [(ngModel)]="location"></ion-input>
     <button ion-button icon-only color="dark" clear (click)="post()">
      <ion-icon name="send"></ion-icon>
     </button>

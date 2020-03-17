@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>reply</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content> 
+    <ion-grid style="width: 75%;">
+      <ion-row class="rowStyle">
+        <h6>Deine Antwort</h6>
+        <ion-input type="text" placeholder="Beschreibe wie du helfen kannst..." [(ngModel)]="text"></ion-input>
+      </ion-row>
+      
+      <ion-row class="rowStyle">
+        <h6>Deine E-Mail</h6>
+        <ion-input type="email" placeholder="Deine email" [(ngModel)]="email"></ion-input>
+      </ion-row>
+      
+      <ion-row>
+        <button ion-button block round outline color="light"
+        style="margin-top: 20px;" (click)="antwortAbschicken()">Antwort abschicken</button>
+      </ion-row>
+  
+      <ion-row class="rowStyle">
+  <ion-item>
+    <ion-label>Wenn du das Formular abschickst bestätigst du dass deine Kontaktdaten für die Vermittlung übermittelt werden.</ion-label>
+  </ion-item>
+      </ion-row>
+    </ion-grid>  
+</ion-content>
