@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Aktuelle Hilfe-Gesuche</ion-title>
+    <ion-buttons end>
+<button ion-button icon-only clear>
+  <ion-icon name="LogOut"></ion-icon>
+</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-row margin class="rowStyle">
+    
+    <ion-input type="text" placeholder="Wie kann man dich unterstützen..." [(ngModel)]="text"></ion-input>
+
+    <button ion-button icon-only color="dark" clear (click)="post()">
+     <ion-icon name="send"></ion-icon>
+    </button>
+
+  </ion-row>
+
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content>
+
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngFor="let post of posts">
+    <ion-item-divider color ="dark">
+      {{ post.data().owner_name }} sucht nach
+    </ion-item-divider>
+
+    <ion-item text-wrap>
+      {{ post.data().text }}
+    </ion-item>
+
+    <ion-row class="bottom-bar">
+      <ion-col>
+        <button ion-button icon-left clear small color="dark">
+            <ion-icon name="thumbs-up"></ion-icon>
+            <small>Jetzt helfen</small>
+        </button>
+      </ion-col>
+
+      <ion-col>
+        <button ion-button icon-left clear small color="dark">
+          <ion-icon name="text"></ion-icon>
+          <small>Rückfrage</small>
+      </button>
+      </ion-col>
+
+      <ion-col>
+        <button ion-button icon-left clear small color="dark">
+          <small>vor {{ ago(post.data().created.toDate()) }}</small>
+      </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+<ion-infinite-scroll (ionInfinite)="loadMorePost($event)">
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+</ion-content>
